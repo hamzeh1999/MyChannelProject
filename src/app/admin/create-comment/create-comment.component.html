@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>Add Comment</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="commentForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter Comment Text</mat-label>
+          <input type="text" matInput  formControlName="commentText" >
+        
+          <mat-error *ngIf="commentForme.controls['commentText'].hasError('required')">
+            comment Text is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+      <mat-label>Enter User Name :</mat-label>
+          <select formControlName="userId"  class="form-control">
+            <option [ngValue]="null" disabled>Select User</option>
+            <option *ngFor="let user of home.data"  [ngValue]="user.userId"  >{{user.userName}}</option>
+          </select>
+      </li>
+      <li>
+              <mat-label>Enter the video name:</mat-label>                       
+              <select formControlName="videoId"  class="form-control">
+                  <option [ngValue]="null" disabled>Select video</option>
+                  <option *ngFor="let video of home.dataVideo"  [ngValue]="video.videoId" >{{video.videoName}}</option>
+          
+                </select>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Register Date</mat-label>
+              <input type="datetime" readonly value="commentDate" matInput   formControlName="commentDate"    >
+            
+            </mat-form-field>
+          </li>
+         
+      </form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>

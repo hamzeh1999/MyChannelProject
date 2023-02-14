@@ -1,0 +1,76 @@
+<app-user-header></app-user-header>
+<table style="margin-top: 100px;">
+    <tr> <!--first row-->
+        <th> <!--heads of row-->
+
+          Testimonial Id
+
+        </th>
+
+        <th>
+          Testimonial Text
+        </th>
+     
+
+        <th>
+            Image
+        </th>
+
+        <th>
+            Operations
+        </th>
+
+    </tr>
+    <tr *ngFor="let Testimonial of home.dataTestimonialByUser">
+        <td>
+            {{Testimonial.testimonialId}}
+
+        </td>
+        <td>
+            {{Testimonial.testimonialText}}
+
+        </td>
+        <td>
+           <img src=" ../../../../../assets/images/{{Testimonial.testimonialImage}}" style="height:50px ; width :50px;">
+
+        </td>
+        <td>
+            <!-- <button (click)="openDeleteDialog(Testimonial.testimonialId)">delete</button> -->
+            <button  class="btn  btn-info" (click)="openUpdateDialog(Testimonial.testimonialId,Testimonial.testimonialText,Testimonial.testimonialImage)">update</button>
+            <button class="btn btn-danger" class="btn btn-secondary" (click)="openDeleteDialog(Testimonial.testimonialId)">Delete</button>
+
+        </td>
+    </tr>
+</table>
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateTestimonial" (ngSubmit)="updateTestimonial()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the Testimonial Text</mat-label>
+                <input type="text" matInput  formControlName="testimonialText" [(ngModel)]="Testimonial.testimonialText"   placeholder="testimonialText">
+
+
+              </mat-form-field>
+            </li>
+
+         
+        </ul>
+        <button class="btn btn-success">Update</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+    </form>
+</ng-template>
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Testimonial ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>

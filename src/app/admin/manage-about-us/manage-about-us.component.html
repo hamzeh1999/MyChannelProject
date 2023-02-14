@@ -1,0 +1,142 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+<button class="btn btn-dark" (click) = "openCreatDialog()">create new</button>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>AboutUs Id</th>
+                  <th>AboutUs Text</th>
+                  <th>AboutUs Text 1</th>
+                  <th>AboutUs Text 2</th>
+                  <th>AboutUs Text 3</th>
+
+                  <th>AboutUs image</th>
+                  <th>operations</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let AboutUs of home.dataAboutUs" class="alert" role="alert">
+                  <td>{{AboutUs.aboutUsId}}</td>
+                  <td>{{AboutUs.aboutUs_Text}}</td>
+                  <td>{{AboutUs.aboutUs_Text1}}</td>
+                  <td>{{AboutUs.aboutUs_Text2}}</td>
+                  <td>{{AboutUs.aboutUs_Text3}}</td>
+                  <td><img src="../../../assets/images/{{AboutUs.aboutUs_Image}}" style="border-radius:15px; height:100px ; width :100px;"></td>
+                  <td> <button class="btn  btn-info" (click)="openUpdateDialog(AboutUs.aboutUsId,AboutUs.aboutUs_Text,AboutUs.aboutUs_Image,AboutUs.aboutUs_Text1,AboutUs.aboutUs_Text2,AboutUs.aboutUs_Text3 )"><i class="fa fa-pencil"></i> update</button>
+                       <button class="btn btn-danger" (click)="openDeleteDialog(AboutUs.aboutUsId )"><i class="fa fa-close"></i> Delete</button>
+                  </td>
+                  <td>
+                      <a href="#" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true"></span></a>
+                  </td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateAboutUs" (ngSubmit)="updateAboutUs()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the AboutUs Text</mat-label>
+                <input type="text" matInput  formControlName="aboutUs_Text" [(ngModel)]="AboutUs.aboutUs_Text"   placeholder="aboutUs_Text">
+              
+                
+              </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Enter the AboutUs_Text1</mat-label>
+                    <input type="text" matInput  formControlName="aboutUs_Text1" [(ngModel)]="AboutUs.aboutUs_Text1"   placeholder="aboutUs_Text">
+                  
+                    
+                  </mat-form-field>
+                </li>
+          
+                <li>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter the AboutUs_Text2</mat-label>
+                        <input type="text" matInput  formControlName="aboutUs_Text2" [(ngModel)]="AboutUs.aboutUs_Text2"   placeholder="aboutUs_Text">
+                      
+                        
+                      </mat-form-field>
+                    </li>
+          
+                    <li>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Enter the AboutUs_Text3</mat-label>
+                            <input type="text" matInput  formControlName="aboutUs_Text3" [(ngModel)]="AboutUs.aboutUs_Text3"   placeholder="aboutUs_Text">
+                          
+                            
+                          </mat-form-field>
+                        </li>
+                      
+            
+              <li>
+      
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="aboutUs_Image" [(ngModel)]="AboutUs.aboutUs_Image" placeholder="choose image">
+              <!-- <button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+                
+          </li>
+        </ul>
+        <button type="submit" class="btn btn-success">Save</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete category ?</h2>
+<mat-dialog-actions align="end">
+
+    <button class="btn btn-success" mat-button mat-dialog-close ="no">no</button>
+
+    <button class="btn btn-danger" mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+
+

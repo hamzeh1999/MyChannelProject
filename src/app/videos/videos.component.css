@@ -1,0 +1,347 @@
+.profile-head {
+    transform: translateY(5rem)
+  }
+  
+  .cover {
+    background-image: url(https://images.unsplash.com/photo-1530305408560-82d13781b33a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1352&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 20rem;
+  }
+  
+  body {
+    background: #654ea3;
+    background: linear-gradient(to right, #e96443, #904e95);
+    min-height: 100vh;
+    overflow-x: hidden
+  }
+  
+  .px-4.py-3 {
+    margin-top: 90px;
+  }
+  
+  .mb-5 {
+    margin-bottom: 7rem !important;
+  }
+  
+  img {
+    width: 250px;
+  }
+  
+  .rounded {
+    border-radius: 1.25rem !important;
+  }
+  
+  img.rounded.mb-2.img-thumbnail {
+    margin-top: 140px;
+  }
+  
+  body {
+    background-color: #eee
+  }
+  
+  
+  
+  
+  .my-card {
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    background-color: #fff;
+    background-clip: border-box;
+    box-shadow: 0px 0px 8px;
+    margin-bottom: 28px;
+    border-radius: 35px 0;
+    overflow: hidden;
+    transition: .5s
+  }
+  
+  .my-card:hover {
+    box-shadow: 0px 0px 8px #c81a3b
+  }
+  
+  .my-card img {
+    max-height: 15px;
+    width: 10%
+  }
+  
+  .my-card-body {
+    padding: 20px;
+    margin-bottom: 20px
+  }
+  
+  .my-card-body h5 {
+    text-transform: capitalize;
+    line-height: 25px;
+    font-size: 25px
+  }
+  
+  .my-card-body p {
+    margin: 1px 0;
+    font-size: 10px;
+    color: #35b8b8;
+  }
+  
+  .social-icons {
+    margin-bottom: 25px
+  }
+  
+  .social-icons a {
+    margin-right: 22px;
+    color: #363842;
+    font-size: 16px
+  }
+  
+  .social-icons a:hover {
+    color: #1bd6cd
+  }
+  
+  .my-card-btn {
+    color: rgb(231, 231, 231);
+    background-color: #c81a3b;
+    padding: 10px 28px;
+    text-decoration: none;
+    text-transform: capitalize;
+    border-radius: 10px 0;
+    transition: .5s
+  }
+  
+  .my-card-btn:hover {
+    color: rgb(15, 15, 15)
+  }
+  
+  /* @media (min-width: 992px) */
+  .col-lg-4 {
+    /* row-gap: revert; */
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 100%;
+    flex: revert;
+  }
+  
+  .h4.mt-0.mb-0 {
+  
+    text-transform: uppercase !important;
+  
+  
+  }
+  
+  /* COMMENT */
+  
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  
+  * {
+    margin: 0;
+    padding: 1;
+    box-sizing: border-box;
+    height: auto;
+  }
+  
+  p {
+    margin: 0%
+  }
+  
+  body {
+    padding: 20px;
+    height: 100vh;
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%)
+  }
+  
+  .container {
+    padding: 0;
+    background-color: white;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75)
+  }
+  
+  .progress-bar {
+    background-color: #ddd;
+    border-radius: 25px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+    height: 10px;
+    width: 100px;
+    max-width: 100%
+  }
+  
+  .progress {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to bottom, #3c1053, #ad5389);
+    background: linear-gradient(to bottom, #3c1053, #ad5389);
+    border-radius: 3px;
+    height: 10px;
+    width: 0;
+    transition: width 0.5s ease-in
+  }
+  
+  .bg-blue {
+    background-color: #138cee;
+    height: 10px;
+    margin-bottom: 20px
+  }
+  
+  .container img.pic {
+    height: 100px;
+    width: 100px;
+    border: 5px solid #138cee;
+    border-radius: 50%;
+    object-fit: cover
+  }
+  
+  .textmuted {
+    font-size: 13px;
+    color: #8d8d8d
+  }
+  
+  .h-blue {
+    color: #138cee;
+    font-size: 20px
+  }
+  
+  .p-blue {
+    color: #138cee;
+    font-size: 16px
+  }
+  
+  .container .row .box button.fas {
+    border: 1px solid #ddd;
+    color: #5f5f5f;
+    font-size: 14px;
+    padding: 5px 0
+  }
+  
+  .container .row .box button {
+    margin-left: 3px;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer
+  }
+  
+  .container .row .box button.fas:hover {
+    background-color: #ddd
+  }
+  
+  .px-9 {
+    padding: 0 30px
+  }
+  
+  .bg {
+    background-color: #ddd;
+    border-radius: 25px;
+    padding: 2px 8px;
+    font-size: 11px
+  }
+  
+  .arrow .btn.btn-primary {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #ddd;
+    outline: none;
+    border: none;
+    color: rgb(87, 85, 85)
+  }
+  
+  .arrow .btn.btn-primary:hover {
+    transform: translateX(15px);
+    transition: transform 0.8s ease
+  }
+  
+  .fas.fa-arrow-right {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+  }
+  
+  .hide .btn.btn-primary {
+    background-color: transparent;
+    border: none;
+    padding: 5px 0
+  }
+  
+  .hide .btn.btn-primary:focus {
+    box-shadow: none;
+    outline: none;
+    color: #5eadee
+  }
+  
+  
+  
+  
+  /* Comment */
+  
+  
+  body {
+    background-color: #eee
+  }
+  
+  .card {
+    background-color: #fff;
+    border: none
+  }
+  
+  .form-color {
+    background-color: #fafafa
+  }
+  
+  .form-control {
+    height: 10px;
+    border-radius: 1px;
+    font-size: 10px;
+  }
+  
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #35b69f;
+    outline: 0;
+    box-shadow: none;
+    text-indent: 10px
+  }
+  
+  .c-badge {
+    background-color: #35b69f;
+    color: white;
+    height: 20px;
+    font-size: 11px;
+    width: 92px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px
+  }
+  
+  .comment-text {
+    font-size: 13px
+  }
+  
+  .wish {
+    color: #35b69f
+  }
+  
+  .user-feed {
+    font-size: 14px;
+    margin-top: 12px
+  }
+  
+  .img.rounded-circle.mr-3 {
+    width: 15px !important;
+    height: 15px !important;
+  
+  }
+  
+  
+  button.btn.btn-success {
+    background-color: #3d868696 !important;
+  }
+  

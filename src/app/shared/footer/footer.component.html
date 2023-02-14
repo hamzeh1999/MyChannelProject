@@ -1,0 +1,70 @@
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+      <div *ngFor="let homeWebsite of home.dataAllHome" class="container">
+        <div class="row">
+    
+          <div class="col-lg-3 col-md-6">
+            <div  class="footer-info">
+              <img style="    margin-top: -50px; margin-left: -100px;color: aqua;" src="../../../assets/images/logoF.png">
+            
+             
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a routerLink="/home" href="#home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a routerLink="/aboutus"  href="#about">About Us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a routerLink="/contactus"href="#contactus">Contact Us</a></li>
+             
+              
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Video Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Video Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Watch Video</a></li>
+             
+              
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Keep In Touch</h4>
+            <p>We are more than happy to reach our videos</p>
+            <p>
+              {{homeWebsite.address}} <br>
+              <br>
+               <strong>Phone:</strong> +962-{{homeWebsite.phoneNumber}}<br>
+               
+             </p>
+             <div class="social-links mt-3">
+                
+              <a style="margin-left: 3rem;" href={{homeWebsite.socialmedia}} class="facebook"><i class="bx bxl-facebook"></i></a>
+            
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>My Channel</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
+        Designed by <a>My Channel Company</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->

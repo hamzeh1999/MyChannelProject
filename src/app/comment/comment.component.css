@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif
+}
+
+p {
+    margin: 0%
+}
+
+body {
+    padding: 20px;
+    height: 100vh;
+    background-color: #FF9A8B;
+    background-image: linear-gradient(90deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%)
+}
+
+.container {
+    margin: 20px auto;
+    padding: 0;
+    background-color: white;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 6px 10px 23px -4px rgba(0, 0, 0, 0.75)
+}
+
+.progress-bar {
+    background-color: #ddd;
+    border-radius: 25px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+    height: 10px;
+    width: 100px;
+    max-width: 100%
+}
+
+.progress {
+    background: #ad5389;
+    background: -webkit-linear-gradient(to bottom, #3c1053, #ad5389);
+    background: linear-gradient(to bottom, #3c1053, #ad5389);
+    border-radius: 3px;
+    height: 10px;
+    width: 0;
+    transition: width 0.5s ease-in
+}
+
+.bg-blue {
+    background-color: #138cee;
+    height: 10px;
+    margin-bottom: 20px
+}
+
+.container img.pic {
+    height: 100px;
+    width: 100px;
+    border: 5px solid #138cee;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.textmuted {
+    font-size: 13px;
+    color: #8d8d8d
+}
+
+.h-blue {
+    color: #138cee;
+    font-size: 20px
+}
+
+.p-blue {
+    color: #138cee;
+    font-size: 16px
+}
+
+.container .row .box button.fas {
+    border: 1px solid #ddd;
+    color: #5f5f5f;
+    font-size: 14px;
+    padding: 5px 0
+}
+
+.container .row .box button {
+    margin-left: 3px;
+    background-color: white;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    cursor: pointer
+}
+
+.container .row .box button.fas:hover {
+    background-color: #ddd
+}
+
+.px-9 {
+    padding: 0 30px
+}
+
+.bg {
+    background-color: #ddd;
+    border-radius: 25px;
+    padding: 2px 8px;
+    font-size: 11px
+}
+
+.arrow .btn.btn-primary {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background-color: #ddd;
+    outline: none;
+    border: none;
+    color: rgb(87, 85, 85)
+}
+
+.arrow .btn.btn-primary:hover {
+    transform: translateX(15px);
+    transition: transform 0.8s ease
+}
+
+.fas.fa-arrow-right {
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.hide .btn.btn-primary {
+    background-color: transparent;
+    border: none;
+    padding: 5px 0
+}
+
+.hide .btn.btn-primary:focus {
+    box-shadow: none;
+    outline: none;
+    color: #5eadee
+}

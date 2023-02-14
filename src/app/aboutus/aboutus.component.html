@@ -1,0 +1,22 @@
+
+<!-- ======= About Section ======= -->
+<section id="about" class="about">
+  <div class="container">
+    <div *ngFor="let aboutUs of home.dataAboutUs"  class="row">
+      <div  class="col-xl-6 col-lg-7" data-aos="fade-right">
+        <img src="../../assets/images/{{aboutUs.aboutUs_Image}}" class="img-fluid" alt="">
+      </div>
+      <div class="col-xl-6 col-lg-5 pt-5 pt-lg-0">
+       <h2 style="font-size: 40px !Important; " data-aos="fade-up">ABOUT US</h2>
+       <br>
+
+        <h3 style="font-size: 20px !Important;" data-aos="fade-up"> {{aboutUs.aboutUs_Text}}</h3><br>
+        <h3 style="font-size: 20px !Important;" data-aos="fade-up"> {{aboutUs.aboutUs_Text1}}</h3><br>
+        <h3 style="font-size: 20px !Important;" data-aos="fade-up"> {{aboutUs.aboutUs_Text2}}</h3><br>
+        <h3 style="font-size: 20px !Important;" data-aos="fade-up"> {{aboutUs.aboutUs_Text3}}</h3><br>
+
+      </div>
+    </div>
+  </div>
+</section><!-- End About Section -->
+

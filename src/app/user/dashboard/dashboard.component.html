@@ -1,0 +1,226 @@
+<app-user-header></app-user-header>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div style=" margin-right: 200px;" class="container emp-profile">
+  <form method="post">
+    <div *ngFor="let user of home.datagetuser " class="row">
+      <div class="col-md-4">
+        <div class="profile-img">
+          <img style="border-radius: 50%;"
+          src="../../../assets/images/{{user.userImage}}"
+            alt="" />
+
+        </div>
+      </div>
+      <div style="padding-top: 130px;" class="col-md-6">
+        <div class="profile-head">
+          <h5 style="font-size: 15px;font-family: Poppins-Regular;">
+            {{user.userName}}
+          </h5>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+            </li>
+
+        </ul>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <input style="margin-top: 100px;" type="button" (click)="openUpdateDialog(user.userId,user.userName,user.userImage,user.userAge,user.email,user.password_,user.addressUser,user.roleId )" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+      </div>
+    </div>
+
+
+
+    <br><br>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-work">
+          <a href="http://localhost:4200/userHome"> Home Page</a><br />
+          <br><br>
+
+          <a href="http://localhost:4200/user/manageChannel"> Edit My Channel</a><br />
+
+          <a href="http://localhost:4200/user/addVideos"> Add Videos</a><br />
+          <a href="http://localhost:4200/user/manageTestimonial"> Edit Testimonial</a><br />
+          <br><br>
+
+
+        </div>
+      </div>
+      <div *ngFor="let user of home.datagetuser " class="col-md-8">
+        <div class="tab-content profile-tab" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>User Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.userId}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.userName}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.email}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.addressUser}}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Age</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{user.userAge}}</p>
+                            </div>
+                        </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hourly Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>10$/hr</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Total Projects</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>230</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>English Level</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Availability</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>6 months</p>
+                            </div>
+                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Your Bio</label><br/>
+                        <p>Your detail description</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </form>
+</div>
+
+
+
+<app-footer></app-footer>
+
+
+
+
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+  <form [formGroup]="UpdateUserForm" (ngSubmit)="updateUser()">
+      <ul>
+      <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter the user name</mat-label>
+              <input type="text" matInput  formControlName="userName" [(ngModel)]="user.userName"   placeholder="categoryName">
+
+
+            </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter User Email</mat-label>
+              <input type="email" matInput  formControlName="email"  [(ngModel)]="user.email"    placeholder="Email :">
+            </mat-form-field>
+        </li>
+
+
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter User Password</mat-label>
+              <input type="password" matInput  formControlName="password_"  [(ngModel)]="user.password_"    placeholder="Password :">
+            </mat-form-field>
+        </li>
+
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter the user Address</mat-label>
+              <input type="text" matInput  formControlName="addressUser" [(ngModel)]="user.addressUser"  >
+
+
+            </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the user Age</mat-label>
+                <input type="number" matInput  formControlName="userAge" [(ngModel)]="user.userAge" >
+
+
+              </mat-form-field>
+            </li>
+
+
+
+            <li>
+
+              <input type="file"  #file (change)="uploadFile(file.files)" formControlName="userImage" [(ngModel)]="user.userImage"  placeholder="choose image">
+            <!-- //<button (click)="file.click()">upload Image</button> -->
+            <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+        </li>
+
+
+
+
+      </ul>
+      <button type="submit">Update</button>
+
+  </form>
+
+</ng-template>

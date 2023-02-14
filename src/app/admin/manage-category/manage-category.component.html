@@ -1,0 +1,118 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+
+<button class="btn btn-dark" (click) = "openCreatDialog()">create new</button>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>category Id</th>
+                  <th> category name</th>
+                  <th>category discription </th>
+                  <th>category image</th>
+                  <th>operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let category of home.dataCategory" class="alert" role="alert">
+                  <td>{{category.categoryId}}</td>
+                  <td> {{category.categoryName}} </td>
+                  <td> {{category.categoryDescription}} </td>
+                  <td>
+                    <img src="../../../assets/images/{{category.categoryImage}}" style="border-radius:15px; height:100px ; width :100px;">
+         
+                 </td>
+                 
+                  <td> <button class="btn  btn-info" (click)="openUpdateDialog(category.categoryId,category.categoryName,category.categoryDescription,category.categoryImage )"><i class="fa fa-pencil"></i> update</button>
+                       <button class="btn btn-danger" (click)="openDeleteDialog(category.categoryId )"><i class="fa fa-close"></i> Delete</button>
+                  </td>
+              
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateCategory" (ngSubmit)="updateCategory()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the category name</mat-label>
+                <input type="text" matInput  formControlName="categoryName" [(ngModel)]="category.categoryName"   placeholder="categoryName">
+              
+                
+              </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Enter the category Description</mat-label>
+                    <input type="text" matInput  formControlName="categoryDescription" [(ngModel)]="category.categoryDescription"   placeholder="Description">
+                  
+                    
+                  </mat-form-field>
+                </li>
+                
+            
+              <li>
+      
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="categoryImage" [(ngModel)]="category.categoryImage" placeholder="choose image">
+              <!-- <button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+                
+          </li>
+        </ul>
+        <button type="submit" class="btn btn-success">Save</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete category ?</h2>
+<mat-dialog-actions align="end">
+
+    <button class="btn btn-success" mat-button mat-dialog-close ="no">no</button>
+
+    <button class="btn btn-danger" mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+
+

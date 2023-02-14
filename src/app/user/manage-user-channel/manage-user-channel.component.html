@@ -1,0 +1,122 @@
+<app-user-header></app-user-header>
+
+
+<button class="btn btn-dark"  (click) = "openCreatDialog()">create new</button>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th>channel Id</th>
+                  <th>channel name</th>
+                  <th>channel discription </th>
+                  <th>Channel Date</th>
+                  <th>Channel Img </th>
+                  <!-- <th>User Id</th> -->
+                  <th>Category  Name</th>
+                  <th>operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr  *ngFor="let channel of home.datauserchannel" class="alert" role="alert">
+                  <td>{{channel.channelId}}</td>
+                  <td>  {{channel.channelName}} </td>
+                  <td> {{channel.channelDescription}} </td>
+                  <td> {{channel.channelDate| date: 'dd-MM-yyy'}}</td>
+               <td><img src="../../../assets/images/{{channel.channelImage}}" style="border-radius:15px; height:100px ; width :100px;"></td>
+                  <!-- <td>   {{channel.userId}} </td> -->
+                  <select  disabled  style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                    <option  autofocus aria-readonly="true" *ngFor="let category of home.dataCategory"   [ngValue]="category.categoryId" [selected]="channel.categoryId==category.categoryId">{{category.categoryName}}</option>
+                 </select> 
+                  <td> <button class="btn  btn-info" (click)="openUpdateDialog(channel.channelId,channel.channelName,channel.channelDescription,channel.userId,channel.categoryId,channel.channelImage )"><i class="fa fa-pencil"></i> update</button>
+                       <button class="btn btn-danger" (click)="openDeleteDialog(channel.channelId )"><i class="fa fa-close"></i> Delete</button>
+                  </td>
+              
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateChannel" (ngSubmit)="updatechannel()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the channe Name</mat-label>
+                <input type="text" matInput  formControlName="channelName" [(ngModel)]="channel.channelName"  >
+              
+                
+              </mat-form-field>
+            </li>
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Enter the channel Description</mat-label>
+                    <input type="text" matInput  formControlName="channelDescription" [(ngModel)]="channel.channelDescription"   >
+                  
+                    
+                  </mat-form-field>
+                </li>
+                <li>
+           
+                    <mat-label>Enter User Name :</mat-label>
+                    <select formControlName="userId"  class="form-control">
+                      <option [ngValue]="null" disabled>Select User</option>
+                      <option *ngFor="let user of home.data"  [ngValue]="user.userId"  >{{user.userName}}</option>
+              
+                    </select>
+                </li>
+                 
+                  <li>
+                         
+                    <mat-label>Enter Category Name :</mat-label>
+                    <select formControlName="categoryId"  class="form-control">
+                      <option [ngValue]="null" disabled>Select Category</option>
+                      <option *ngFor="let category of home.dataCategory"  [ngValue]="category.categoryId">{{category.categoryName}}</option>
+              
+                    </select>
+                </li>
+                    
+                        
+            
+              <li>
+      
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="channelImage" [(ngModel)]="channel.channelImage" placeholder="choose image">
+              <!-- <button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+                
+          </li>
+
+
+
+
+
+                        <li>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Enter the Register Date</mat-label>
+                                <input type="datetime" matInput  formControlName="channelDate" value="channel.channelDate" readonly >   
+                              </mat-form-field>
+                            </li>
+        
+        </ul>
+        <button type="submit" class="btn btn-success" >Update</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete channel ?</h2>
+<mat-dialog-actions align="end">
+
+    <button  class="btn btn-success" mat-button mat-dialog-close ="no">no</button>
+
+    <button class="btn btn-danger"  mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+</ng-template>

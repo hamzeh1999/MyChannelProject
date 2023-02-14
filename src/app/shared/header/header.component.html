@@ -1,0 +1,26 @@
+<!-- ======= Header ======= -->
+<header   id="header" class="fixed-top d-flex align-items-center">
+    <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+      <div style="width: 200px;" class="logo">
+        <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" routerLink="/home" href="#home">HOME</a></li>
+          <li><a class="nav-link  scrollto"  href="#about">ABOUT US</a></li>
+          <li><a class="nav-link scrollto"  href="#contact">CONTACT US</a></li>
+          <li><a class="nav-link scrollto"  href="#category">CATEGORY</a></li>
+          <li><a class="nav-link scrollto"  href="#testimonial">TESTIMONIAL</a></li>
+          <li><a class="nav-link scrollto"  routerLink="/security/login" href="#security/login">LOGIN</a></li>
+          
+         
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->

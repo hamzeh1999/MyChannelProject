@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Add Category</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="categoryForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter Category Name</mat-label>
+          <input type="text" matInput  formControlName="categoryName"     placeholder="category name">
+        
+          <mat-error *ngIf="categoryForme.controls['categoryName'].hasError('required')">
+            Category Name is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+   
+    
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Enter Description</mat-label>
+            <input type="text" matInput  formControlName="categoryDescription"    placeholder="category Description">
+          
+            <mat-error *ngIf="categoryForme.controls['categoryDescription'].hasError('required')">
+              Category Description is <strong>required</strong>
+            </mat-error> 
+          </mat-form-field>
+        </li>
+        <li>
+      
+          <input type="file"  #file (change)="uploadFile(file.files)" formControlName="categoryImage"  placeholder="choose image">
+        <!-- <button (click)="file.click()">upload Image</button> -->
+        <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+          
+    </li>
+      
+      
+      
+    
+        
+      </form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="btn btn-danger" mat-dialog-close>Cancel</button>
+  
+  <button mat-button class="btn btn-success"  [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+ 
+</mat-dialog-actions>
+
+

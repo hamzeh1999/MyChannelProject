@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>Add Contact_Us</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="contactUsForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter Subject :</mat-label>
+          <input type="text" matInput  formControlName="subject">
+        
+          <mat-error *ngIf="contactUsForme.controls['subject'].hasError('required')">
+            subject is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter message :</mat-label>
+          <input type="text" matInput  formControlName="message" >
+          <mat-error *ngIf="contactUsForme.controls['message'].hasError('required')">
+            message  is <strong>required</strong>
+            </mat-error> 
+        </mat-form-field>
+    </li>
+    
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter email</mat-label>
+          <input type="text"  matInput  formControlName="email"    >
+          <mat-error *ngIf="contactUsForme.controls['email'].hasError('required')">
+            Email  is <strong>required</strong>
+            </mat-error> 
+        </mat-form-field>
+      </li>
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter map Address</mat-label>
+          <input type="text" matInput  formControlName="mapAddress">      
+        </mat-form-field>
+    </li>
+
+      </form> 
+</mat-dialog-content>
+
+
+
+
+<mat-dialog-actions align="end">
+  <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>
+

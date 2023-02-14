@@ -1,0 +1,60 @@
+
+
+
+
+<h2 mat-dialog-title>Add AboutUs</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="AboutUsForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter AboutUs Text </mat-label>
+          <input type="text" matInput  formControlName="aboutUs_Text"     placeholder="AboutUs text">
+        
+          <mat-error *ngIf="AboutUsForme.controls['aboutUs_Text'].hasError('required')">
+            AboutUs text is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enter AboutUs_Text1 </mat-label>
+        <input type="text" matInput  formControlName="aboutUs_Text1"     placeholder="AboutUs text">
+      
+        
+      </mat-form-field>
+  </li>
+  <li>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter AboutUs_Text2 </mat-label>
+      <input type="text" matInput  formControlName="aboutUs_Text2"     placeholder="AboutUs text">
+    </mat-form-field>
+</li>
+<li>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter AboutUs_Text3 </mat-label>
+    <input type="text" matInput  formControlName="aboutUs_Text3"     placeholder="AboutUs text">
+  </mat-form-field>
+</li>
+
+    <li>
+      
+          <input type="file"  #file (change)="uploadFile(file.files)" formControlName="aboutUs_Image"  placeholder="choose image">
+        <!-- <button (click)="file.click()">upload Image</button> -->
+        <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+          
+    </li>
+      
+      
+      
+    
+        
+      </form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button  class="btn btn-danger"   mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-success" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>
+

@@ -1,0 +1,147 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+
+  <button class="btn btn-dark" (click) = "openCreateDialog()">create new</button>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                    <th> <!--heads of row-->
+                        ContactUs Id
+            
+                        
+                    </th>
+                    <th> <!--heads of row-->
+                        subject 
+                    </th>
+                    
+                    <th>
+                        Message
+                    </th>
+                    <th>
+                        Email                   
+                     </th>
+                    <!-- 000 -->
+                    
+                    <th>
+                        operations
+                    </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr   *ngFor="let contactUs of home.dataContact"class="alert" role="alert">
+                    <td>
+                        {{contactUs.contactUsId}}
+            
+                    </td>
+                    <td>
+                        {{contactUs.subject}}
+            
+                    </td>
+                    <td>
+                        {{contactUs.message}}
+            
+                    </td>
+                    <td>
+                        {{contactUs.email}}
+            
+                    </td>
+                      <!-- <td>
+                        {{contactUs.mapAddress}}
+            
+                    </td> -->
+                  <td> <button class="btn  btn-info" (click)="openUpdateDialog(contactUs.contactUsId,contactUs.subject,contactUs.message,contactUs.mapAddress,contactUs.email)"><i class="fa fa-pencil"></i> update</button>
+                       <button class="btn btn-danger" (click)="openDeleteDialog(contactUs.contactUsId )"><i class="fa fa-close"></i> Delete</button>
+                  </td>
+              
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateContactUS" (ngSubmit)="UpdateContact()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the subject</mat-label>
+                <input type="text" matInput  formControlName="subject" [(ngModel)]="contactUs.subject"  >
+              </mat-form-field>
+            </li>
+         
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Enter the Message:</mat-label>
+                    <input type="text" matInput  formControlName="message" [(ngModel)]="contactUs.message"   >
+                  
+                    
+                  </mat-form-field>
+                </li>
+                <li>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Enter the Map Address:</mat-label>
+                        <input type="text" matInput  formControlName="mapAddress" [(ngModel)]="contactUs.mapAddress"   >
+                      
+                        
+                      </mat-form-field>
+                    </li>
+                    
+                        <li>
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <mat-label>Enter the email</mat-label>
+                                <input type="email" matInput  formControlName="email" [(ngModel)]="contactUs.email"  >   
+                              </mat-form-field>
+                            </li>
+        
+        </ul>
+        <button class="btn btn-success" type="submit">Save</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Contact Us Page ?</h2>
+<mat-dialog-actions align="end">
+
+    <button class="btn btn-danger" mat-button mat-dialog-close ="no">no</button>
+
+    <button class="btn btn-success"  mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>
+

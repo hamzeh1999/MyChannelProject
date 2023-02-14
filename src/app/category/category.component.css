@@ -1,0 +1,7 @@
+img.img-fluid {
+  width: 100% !important;
+}
+
+.row.portfolio-container.aos-init.aos-animate {
+  height: auto !important;
+}

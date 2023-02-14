@@ -1,0 +1,130 @@
+
+<app-user-header></app-user-header>
+<br><br><br><br>
+
+
+ <div  class="coll row">
+  <div class="col-md-12">
+      <div class="table-wrap">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th>User Id</th>
+                <th>User name</th>
+                <th>User Email</th>
+                <th>User Password</th>
+                <th>User Age</th> 
+                <th>User Address </th>
+                <th> Image User </th>
+                <th>operation </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let user of home.datagetuser " class="alert" role="alert">
+                <td>  {{user.userId}}</td>
+                <td>  {{user.userName}} </td>
+                <td>  {{user.email}} </td>
+                <td> {{user.password_}}</td>
+                <td>  {{user.userAge}}</td> 
+                <td>  {{user.addressUser}} </td>
+                <td>           <img src="../../../assets/images/{{user.userImage}}" style="height:50px ; width :50px;">
+                </td>
+                <td>  <button class="btn  btn-info" (click)="openUpdateDialog(user.userId,user.userName,user.userImage,user.userAge,user.email,user.password_,user.addressUser,user.roleId )">update</button>
+                  <button class="btn btn-danger" (click)="openDeleteDialog(user.userId)">Delete</button>
+                </td>
+            
+                </tr>
+            </tbody>
+          </table>
+      </div>
+  </div>
+</div> 
+
+
+
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateUserForm" (ngSubmit)="updateUser()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the user name</mat-label>
+                <input type="text" matInput  formControlName="userName" [(ngModel)]="user.userName"   placeholder="categoryName">
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter User Email</mat-label>
+                <input type="email" matInput  formControlName="email"  [(ngModel)]="user.email"    placeholder="Email :">
+              </mat-form-field>
+          </li>
+
+
+          <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter User Password</mat-label>
+                <input type="password" matInput  formControlName="password_"  [(ngModel)]="user.password_"    placeholder="Password :">
+              </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the user Address</mat-label>
+                <input type="text" matInput  formControlName="addressUser" [(ngModel)]="user.addressUser"  >
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter the user Age</mat-label>
+                  <input type="number" matInput  formControlName="userAge" [(ngModel)]="user.userAge" >
+
+
+                </mat-form-field>
+              </li>
+
+
+
+              <li>
+
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="userImage" [(ngModel)]="user.userImage"  placeholder="choose image">
+              <!-- //<button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+          </li>
+
+        
+
+
+        </ul>
+        <button type="submit">Update</button>
+
+    </form>
+
+</ng-template>
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete user ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+
+
+
+

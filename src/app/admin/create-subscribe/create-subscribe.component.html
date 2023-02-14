@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Add subscribe</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="SubscribeForme ">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter incomes</mat-label>
+          <input type="number" matInput  formControlName="incomes"     placeholder="incomes">
+
+          <mat-error *ngIf="SubscribeForme .controls['incomes'].hasError('required')">
+            incomes is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+    </li>
+    <li>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enter channelId</mat-label>
+        <input type="number" matInput  formControlName="channelId"     placeholder="incomes">
+      </mat-form-field>
+  </li>
+ 
+  <li>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter userId</mat-label>
+      <input type="number" matInput  formControlName="userId"     placeholder="incomes">
+
+    </mat-form-field>
+</li>
+    <!-- to upload file -->
+
+
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Enter Description</mat-label>
+            <input type="text" matInput  formControlName="subscribeChannel"    placeholder="subscribeChannel ">
+
+            <mat-error *ngIf="SubscribeForme .controls['subscribeChannel'].hasError('required')">
+              subscribeChannel is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </li>
+
+
+
+
+
+
+      </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+
+  <button mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>
+
+

@@ -1,0 +1,168 @@
+<!-- <form>
+  <label for="channelId">channel Id
+
+  </label>
+  <input style="border: solid;"  type="number" id ="channelId" name="channelId" [value]="channelId" (change)="InputValue($event)">
+<button class="btn btn-success" (click)="getBadReportOnChannel()"> Search</button>
+</form> -->
+
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+
+<div class="row">
+<form  class="col-md-6">  
+  <mat-label>Enter channel Name :</mat-label>
+  <select (change)="InputValue($event)" formControlName="channelId"  class="form-control">
+    <option [ngValue]="null" disabled>Select channel</option>
+    <option *ngFor="let channel of home.datachannelforrep" id ="channelId" [ngValue]="channel.channelId"   [value]="channel.channelId"  >{{channel.channelName}}</option>
+
+  </select>
+</form>
+  <button type="submit" style="width:200px;margin-top:20px;" class="col-md-6" class="btn btn-success" (click)="getBadReportOnChannel()"> Search</button>
+
+</div>
+<button  class="btn btn-dark" (click) = "openCreatDialog()">create new</button>
+<!-- <button class="btn btn-dark" (click) = "getBadReportOnChannel()">getBadReportOnChannel</button> -->
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-wrap">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th> Report Id</th>
+                  <th>Report Text</th>
+                  <th>Channel Id </th>
+                  <th>operations</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let report of home.data" class="alert" role="alert">
+                  <td> {{report.reportId}}</td>
+                  <td>{{report.reportText}}</td>
+                  <td >{{report.channelId}}</td>
+                 
+                  <td> <button class="btn  btn-info" (click)="openUpdateDialog(report.reportId,report.reportText,report.channelId)"><i class="fa fa-pencil"></i> update</button>
+                       <button class="btn btn-danger" (click)="openDeleteDialog(report.reportId)"><i class="fa fa-close"></i> Delete</button>
+                       <button class="btn btn-warning" (click)="openReportDialoge(report.channelId)" ><i class="fa fa-envelope"></i> Report</button>
+
+                      </td>
+              
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateReport" (ngSubmit)="updateReport()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the Report text</mat-label>
+                <input type="text" matInput  formControlName="reportText" [(ngModel)]="report.reportText">
+              </mat-form-field>
+            </li>
+            <li>
+           
+                <mat-label>Enter channel Name :</mat-label>
+                <select formControlName="channelId"  class="form-control">
+                  <option [ngValue]="null" disabled>Select channel</option>
+                  <option *ngFor="let channel of home.datachannelforrep"  [ngValue]="channel.channelId"  >{{channel.channelName}}</option>
+          
+                </select>
+            </li>
+              
+        </ul>
+        <button   class="btn btn-success" type="submit">Update</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Report ?</h2>
+<mat-dialog-actions align="end">
+
+    <button  class="btn btn-success" mat-button mat-dialog-close ="no">no</button>
+
+    <button  class="btn btn-danger" mat-button mat-dialog-close="yes">yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+<ng-template #callReportDialoge> <!--work when i call his name-->
+  <form [formGroup]="sendReportForm" (ngSubmit)="sendReport()">
+      <ul>
+      <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>The Report text</mat-label>
+              <input type="text" matInput readonly  formControlName="reportText" [(ngModel)]="bad.reportText" >
+            </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>The Email To:</mat-label>
+                <input type="email" matInput readonly  [(ngModel)]="bad.to" formControlName="to" >
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>The Email From:</mat-label>
+                  <input type="email" matInput readonly [value]="bad.from"  formControlName="from" >
+                </mat-form-field>
+              </li>
+
+              <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>The password </mat-label>
+                    <input type="password" matInput  readonly [value]="bad.password" formControlName="password" >
+                  </mat-form-field>
+                </li>
+<!-- 
+         <li>
+         
+              <mat-label>Enter Email To :</mat-label>
+              <select formControlName="channelId"  class="form-control">
+                <option [ngValue]="null" disabled>Select channel</option>
+                <option *ngFor="let channel of home.datachannelforrep"  [ngValue]="channel.channelId"  >{{channel.channelName}}</option>
+        
+              </select>
+          </li> -->
+            
+      </ul>
+      <button   class="btn btn-success" type="submit">Confirm</button>
+
+  </form>
+</ng-template>

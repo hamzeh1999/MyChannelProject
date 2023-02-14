@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form-title" style="background-image: url(../../../assets/img/login.jpg);">
+                <span class="login100-form-title-1">
+                    Sign In
+                </span>
+            </div>
+
+            <form class="row login100-form validate-form">
+                <mat-form-field>
+                <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
+                    
+                    <span class="label-input100">Email</span>
+                    
+                    <input matInput class="input100"  [formControl]="email" type="email" name="email" placeholder="Enter Email">
+                   
+                    <span class="focus-input100"></span>
+
+               
+                </div>
+                <mat-error      *ngIf="email.hasError('required')  ">
+                    Email is <strong>required</strong>
+                    <!--this will apeare if the email not written-->
+                  </mat-error>
+          
+                <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+                    <!--the reguired and email validators that in the formcontrol object in the login.ts-->
+                  Please enter a valid email address
+                  <!--this will apeare if the email not written in correct form-->
+                </mat-error>
+
+               
+                </mat-form-field>
+
+
+
+                
+                <mat-form-field>
+                <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+                    
+                    <span class="label-input100">Password</span>
+                    <input matInput class="input100" type="password" [formControl]="password" name="pass" placeholder="Enter password">
+                    <span class="focus-input100"></span>
+                </div>
+                <mat-error *ngIf="password.hasError('required')  ">
+                    password is <strong>required</strong>
+                    
+                  </mat-error>
+                  <mat-error *ngIf="password.hasError('minlength')" >
+                    Please enter strong password
+                  </mat-error>
+                </mat-form-field>
+<br>
+                <div class="flex-sb-m w-full p-b-30">
+                    <div class="contact100">
+                       
+                    </div>
+
+                    <div>
+                        <a (click) = "goToRegister()" class="btn btn-Info">
+                            SIGN UP!
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button [disabled]="!email.valid || !password.valid" type="submit" (click)="submit()" class="login100-form-btn">
+                        Login
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

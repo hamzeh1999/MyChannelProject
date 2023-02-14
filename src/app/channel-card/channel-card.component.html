@@ -1,0 +1,42 @@
+
+
+
+<!-- 
+<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
+    <div class="resent-grid-img recommended-grid-img">
+        <a ><img src="../../assets/images/{{channelImage}}" alt=""></a>
+    </div>
+    <div class="resent-grid-info recommended-grid-info">
+        <h3><a  class="title title-info">{{channelName}}</a></h3>
+        <ul>
+            
+               <li  class="author author-info">
+                <select class="author" disabled  style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                     <option  autofocus aria-readonly="true" *ngFor="let user of home.data"   [selected]="userId==user.userId">{{user.userName}}</option>
+                 </select> 
+
+               </li>
+            <li class="right-list"><p class="views views-info">{{channelDate |date: 'dd-MM-yyy'}}</p></li>
+       
+        </ul>
+    </div>
+</div> -->
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="../../assets/images/{{channelImage}}" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{channelName}}</h5>
+          <p class="card-text">{{channelDescription}} </p>
+          <p class="card-text"><small class="text-muted"> Channel owner :  <select class="author" disabled  style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+            <option  autofocus aria-readonly="true" *ngFor="let user of home.data"   [selected]="userId==user.userId">{{user.userName}}</option>
+        </select> </small></p>
+        <p class="card-text"><small class="text-muted">Channel Creat it in {{channelDate |date: 'dd-MM-yyy'}}</small></p>
+
+        </div>
+      </div>
+    </div>
+  </div>

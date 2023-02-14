@@ -1,0 +1,9 @@
+.wrap-login100 {
+    margin-top: 120px !important;}
+    mat-form-field-wrapper {
+         position: none !important; 
+    }
+.matInput1{
+     
+        display: none !important;
+    }

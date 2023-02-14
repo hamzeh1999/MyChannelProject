@@ -1,0 +1,135 @@
+<app-user-header></app-user-header>
+<button class="btn btn-dark"  (click) = "openCreatDialog()">create new</button>
+<table>
+    <tr>
+       <!--first row-->
+       <th> <!--heads of row-->
+        Video Id
+
+    </th>
+       <th> <!--heads of row-->
+            Video Name
+
+        </th>
+
+       <th> <!--heads of row-->
+        Video Description
+
+    </th>
+    <th> <!--heads of row-->
+        release Date
+
+     </th>
+
+        <th>
+          channel Id
+
+        </th>
+        <th>
+          Videos
+      </th>
+        <th>
+            operation
+        </th>
+
+
+    </tr>
+
+    <tr *ngFor="let video of home.dataVideoChannel">
+        <td>
+            {{video.videoId}}
+
+        </td>
+        <td>
+            {{video.videoName}}
+
+        </td>
+        <td>
+            {{video.videoDescription}}
+
+        </td>
+
+        <td>
+         {{video.releaseDate |date: 'dd-MM-yyy'}}
+
+      </td>
+      <td>
+          {{video.channelId}}
+
+      </td>
+
+        <td>
+           <video autoplay loop muted width="320" height="240"  controls>  <source type="video/mp4" src="../../../assets/Video/{{video.videoPath}}"> <source src="../../../assets/videos/{{video.videoPath}}" type="video/ogg"></video>
+        </td>
+
+        <td>
+            <!-- <button (click)="openDeleteDialog(course.courseId)">delete</button> -->
+            <button  class="btn  btn-info" (click)="openUpdateDialog(video.videoId,video.videoPath,video.videoName,video.videoDescription,video.channelId)">update</button>
+            <button class="btn btn-danger" (click)="openDeleteDialog(video.videoId)">Delete</button>
+
+        </td>
+    </tr>
+</table>
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateVideoForm" (ngSubmit)="updateVideo()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the Video Name</mat-label>
+                <input type="text" matInput  formControlName="videoName" [(ngModel)]="video.videoName">
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter Video Description</mat-label>
+                <input type="text" matInput  formControlName="videoDescription"  [(ngModel)]="video.videoDescription" >
+              </mat-form-field>
+          </li>
+
+
+          <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter release Date</mat-label>
+                <input type="dateTime" matInput readonly  value=releaseDate formControlName="releaseDate"   >
+              </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the channel Id</mat-label>
+                <input type="number" matInput readonly  formControlName="channelId" [(ngModel)]="video.channelId"  >
+
+
+              </mat-form-field>
+            </li>
+
+              <li>
+
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="videoPath" [(ngModel)]="video.videoPath">
+              <!-- //<button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+          </li>
+        </ul>
+        <button>Update</button>
+
+    </form>
+</ng-template>
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Video ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+
+
+  </mat-dialog-actions>
+
+</ng-template>
+

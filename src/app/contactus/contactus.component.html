@@ -1,0 +1,88 @@
+
+
+<section id="contact" class="contact">
+  <div class="container">
+
+    <div class="section-title aos-init aos-animate" data-aos="fade-up">
+      <h2>Contact Us</h2>
+      <p>I am glad you asked!, please ask us and we will respond immediately.
+        Would be happy to hear from you if you have any comments or questions about this website or LoveToKnow in general. It’s great to meet you! I really appreciate the kind words about our blog — we do try our best to stay relevant and helpful,
+        I am happy to answer any and all questions you may have about the product. Let me start by talking about our integrations.</p>
+    </div>
+
+
+    <div class="row mt-5 justify-content-center aos-init aos-animate" data-aos="fade-up">
+      <div class="col-lg-10">
+        <form action="forms/contact.php" method="post" role="form" class="php-email-form" [formGroup]="contactUsForme">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <input type="text"  formControlName="subject" name="subject" class="form-control" id="subject" placeholder="Your Subject" required="">
+            </div>
+            <div class="col-md-6 form-group mt-3 mt-md-0">
+              <input type="email" formControlName="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+            </div>
+
+          </div>
+          <div class="form-group mt-3">
+            <textarea  rows="4" cols="50" type="message" formControlName="message" class="form-control" name="message" id="message" placeholder="Your message" required=""></textarea>
+          </div>
+
+
+
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit" (click)="save()">Send Message</button></div>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div  class="row no-gutters justify-content-center aos-init aos-animate" data-aos="fade-up">
+
+      <div  class="col-lg-5 d-flex align-items-stretch">
+        <div *ngFor="let homeWebsite of home.dataAllHome" class="info">
+          <div  class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>{{homeWebsite.address}}</p>
+          </div>
+
+          <div class="email mt-4">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>callCenter@MyChannel.com</p>
+          </div>
+
+          <div class="phone mt-4">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+962-{{homeWebsite.phoneNumber}}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div  class="col-lg-5 d-flex align-items-stretch">
+        <iframe style="border:0; width: 100%; height: 270px;" [src]='home.dataContact[0]["mapAddress"]|safe'  frameborder="0" allowfullscreen=""></iframe>
+      
+
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+
+
+
+
+
+

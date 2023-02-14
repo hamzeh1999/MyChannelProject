@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>Add Channel</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="channelForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter channel Name</mat-label>
+          <input type="text" matInput  formControlName="channelName"     placeholder="channel Name: ">
+        
+          <mat-error *ngIf="channelForme.controls['channelName'].hasError('required')">
+            channel Name is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter channel Description :</mat-label>
+          <input type="text" matInput  formControlName="channelDescription"     placeholder="channel Description :">
+
+        </mat-form-field>
+    </li>
+    
+    <li>
+           
+      <mat-label>Enter User Name :</mat-label>
+      <select formControlName="userId"  class="form-control">
+        <option [ngValue]="null" disabled>Select User</option>
+        <option *ngFor="let user of home.data"  [ngValue]="user.userId"  >{{user.userName}}</option>
+
+      </select>
+  </li>
+   
+    <li>
+           
+      <mat-label>Enter Category Name :</mat-label>
+      <select formControlName="categoryId"  class="form-control">
+        <option [ngValue]="null" disabled>Select Category</option>
+        <option *ngFor="let category of home.dataCategory"  [ngValue]="category.categoryId">{{category.categoryName}}</option>
+
+      </select>
+  </li>
+     
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>channel Date</mat-label>
+              <input type="datetime" readonly value="channelDate" matInput   formControlName="channelDate"    placeholder="channel Date:">
+            
+            </mat-form-field>
+          </li>
+
+          <li>
+      
+            <input type="file"  #file (change)="uploadFile(file.files)" formControlName="channelImage"  placeholder="choose image">
+          <!-- <button (click)="file.click()">upload Image</button> -->
+          <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+            
+      </li>
+
+
+         
+      </form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>

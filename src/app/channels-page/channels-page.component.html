@@ -1,0 +1,72 @@
+<app-user-header></app-user-header>
+<br><br><br><br><br>
+
+
+
+<form  (ngSubmit)="SearchingChannel()" [formGroup]="SearchForm"   class="row">
+    <div class="col-lg-3">
+    <label>Enter channel Name :</label>
+    <input type="text"   formControlName="pchannelName"   class="form-control">
+</div>
+
+    <div class="col-lg-3">
+    <label>Enter  Start Date :</label>
+    <input  type="datetime" formControlName="pdate_from" placeholder="yyyy-mm-dd" class="form-control">
+</div>
+<div class="col-lg-3">
+    <label>Enter  End Date :</label>
+    <input type="datetime"  formControlName="pdate_to"  placeholder="yyyy-mm-dd"  class="form-control">
+</div>
+
+<div class="col-lg-3">
+    <label>Enter  Category  :</label>
+    <input type="text" formControlName="pcategoryName"  class="form-control">
+</div>
+
+<div>
+    <input   type="submit" value="Send" class="btn btn-info">
+</div>
+</form>
+
+<br><br><br><br>
+
+<div class="section-title aos-init aos-animate" data-aos="fade-up">
+  <h1>VISIT OUR CHANNELS </h1>
+  <br>
+  <p>What We Think Out For Ourselves Forms Channels In Which Other Thoughts Will Flow.</p>
+</div>
+
+
+<br>
+
+
+<div class="row">
+<div *ngFor = "let channel of home.dataChannel"  class=" col-lg-6 blog-card">
+  <div  class="meta">
+    <div class="photo" >
+      <img src="../../assets/images/{{channel.channelImage}}" style="width: 100%; height: 100%;">
+    </div>
+    <ul class="details">
+      <li class="author"><select disabled  style="  -webkit-appearance: none; background-color: inherit; border: none; color: white;"><option href="#"  autofocus aria-readonly="true" *ngFor="let user of home.data"   [selected]="channel.userId==user.userId">{{user.userName}}</option></select></li>
+      <li class="date">{{channel.channelDate |date: 'dd-MM-yyy'}}</li>
+      <li class="tags">
+
+      </li>
+    </ul>
+  </div>
+  <div class="description">
+    <h1>{{channel.channelName}}</h1>
+    <h2>{{channel.channelDescription}}</h2>
+    <p class="read-more">
+      <a (click)="getAllVideoByChannelId(channel.channelId)">VIEW VIDEOS</a>
+    </p>
+  </div>
+</div>
+
+</div>
+
+<br><br><br><br><br><br><br>
+
+
+<app-footer></app-footer>
+

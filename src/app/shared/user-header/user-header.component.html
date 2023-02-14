@@ -1,0 +1,25 @@
+<header style="border: 10px ; border-color: aqua;"   id="header" >
+    <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+      <div style="width: 200px;"  class="logo">
+        <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+         
+          <li><a class="nav-link scrollto"   href="http://localhost:4200/userHome">HOME</a></li>     
+          <li><a class="nav-link scrollto"  href="http://localhost:4200/user/dashboard">MY PROFILE</a></li>     
+          <li><a class="nav-link scrollto"  href="http://localhost:4200/channels-page">CHANNELS</a></li>
+          <li><a class="nav-link scrollto" style="color: rgba(255, 255, 255, 0.8) ;" (click)="logout()"> LOGOUT</a></li>
+
+        
+         
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->

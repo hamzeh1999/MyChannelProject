@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>Add Video</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="videoForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter Video Name</mat-label>
+          <input type="text" matInput  formControlName="videoName"     placeholder="User Name: ">
+
+          <mat-error *ngIf="videoForme.controls['videoName'].hasError('required')">
+            video Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter video Description:</mat-label>
+          <input type="text" matInput  formControlName="videoDescription" >
+
+          <mat-error *ngIf="videoForme.controls['videoDescription'].hasError('required')">
+            video Description  is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+    </li>
+
+
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter release Date</mat-label>
+          <input type="datetime" matInput  formControlName="releaseDate"  readonly value="releaseDate"  >
+
+        </mat-form-field>
+    </li>
+
+    <li>
+           
+      <mat-label>Enter channel Name :</mat-label>
+      <select formControlName="channelId"  class="form-control">
+        <option [ngValue]="null" disabled>Select Channel</option>
+        <option *ngFor="let channel of home.dataChannel"  [ngValue]="channel.channelId">{{channel.channelName}}</option>
+
+      </select>
+  </li>
+          <li>
+           
+            <mat-label>Enter Category Name :</mat-label>
+            <select formControlName="categoryId"  class="form-control">
+              <option [ngValue]="null" disabled>Select Category</option>
+              <option *ngFor="let category of home.dataCategory"  [ngValue]="category.categoryId">{{category.categoryName}}</option>
+      
+            </select>
+        </li> 
+
+          <li>
+            <input type="file"  #file (change)="uploadFile(file.files)" formControlName="videoPath">
+          <!-- <button class="btn btn-primary" (click)="file.click()">upload Image</button> -->
+          <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+      </li>
+      </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>

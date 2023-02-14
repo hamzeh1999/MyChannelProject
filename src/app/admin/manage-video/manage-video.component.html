@@ -1,0 +1,172 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+
+<button (click) = "openCreatDialog()">create new</button>
+<table>
+    <tr>
+       <!--first row-->
+       <th> <!--heads of row-->
+        Video Id
+
+    </th>
+       <th> <!--heads of row-->
+            Video Name
+
+        </th>
+
+       <th> <!--heads of row-->
+        Video Description
+
+    </th>
+    <th> <!--heads of row-->
+        release Date
+
+     </th>
+
+        <th>
+          channel Id
+
+        </th>
+        <th>
+          Videos
+      </th>
+      <th>
+        category Id
+    </th>
+        <th>
+            operation
+        </th>
+
+
+    </tr>
+
+    <tr *ngFor="let video of home.dataVideo">
+        <td>
+            {{video.videoId}}
+
+        </td>
+        <td>
+            {{video.videoName}}
+
+        </td>
+        <td>
+            {{video.videoDescription}}
+
+        </td>
+
+        <td>
+          {{video.releaseDate |date: 'dd-MM-yyy'}}
+
+      </td>
+      <td>
+          {{video.channelId}}
+   
+      </td>
+      
+    
+
+        <td>
+           <video autoplay loop muted width="320" height="240"  controls>  <source type="video/mp4" src="../../../assets/Video/{{video.videoPath}}"> </video>
+        </td>
+        <td>
+          {{video.categoryId}}
+      </td>
+
+        <td>
+            <!-- <button (click)="openDeleteDialog(course.courseId)">delete</button> -->
+            <button (click)="openUpdateDialog(video.videoId,video.videoPath,video.videoName,video.videoDescription,video.channelId,video.categoryId)">update</button>
+            <button (click)="openDeleteDialog(video.videoId)">Delete</button>
+
+        </td>
+    </tr>
+</table>
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateVideoForm" (ngSubmit)="updateVideo()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the Video Name</mat-label>
+                <input type="text" matInput  formControlName="videoName" [(ngModel)]="video.videoName">
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter Video Description</mat-label>
+                <input type="text" matInput  formControlName="videoDescription"  [(ngModel)]="video.videoDescription" >
+              </mat-form-field>
+          </li>
+
+
+          <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter release Date</mat-label>
+                <input type="dateTime" matInput readonly  value=releaseDate formControlName="releaseDate"   >
+              </mat-form-field>
+          </li>
+          <li>
+            <mat-label>Enter channel Name :</mat-label>
+            <select formControlName="channelId"  class="form-control">
+              <option [ngValue]="null" disabled>Select Channel</option>
+              <option *ngFor="let channel of home.dataChannel"   [ngValue]="channel.channelId">{{channel.channelName}}</option>
+      
+            </select>
+        </li>
+                <li>
+                 
+                  <mat-label>Enter Category Name :</mat-label>
+                  <select formControlName="categoryId"  class="form-control">
+                    <option [ngValue]="null" disabled>Select Category</option>
+                    <option *ngFor="let category of home.dataCategory"   [ngValue]="category.categoryId">{{category.categoryName}}</option>
+            
+                  </select>
+              </li> 
+              <li>
+
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="videoPath" [(ngModel)]="video.videoPath">
+              <!-- //<button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+          </li>
+        </ul>
+        <button>Update</button>
+
+    </form>
+</ng-template>
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Video ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+
+
+  </mat-dialog-actions>
+
+</ng-template>

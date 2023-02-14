@@ -1,0 +1,97 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+
+<br><br><br>
+<br><br><br>
+
+
+<button class="btn btn-success" (click) = "openCreatDialog()">Create new</button>
+<table>
+    <tr> <!--first row-->
+        <th> <!--heads of row-->
+            Role Id
+            
+        </th>
+       
+        <th>
+           Position
+        </th>
+       
+        
+        <th>
+            Operations
+        </th>
+
+    </tr>
+    <tr *ngFor="let role of home.data">
+        <td>
+            {{role.roleId}}
+
+        </td>
+        <td>
+            {{role.position_}}
+
+        </td>
+       
+        
+        <td>
+            <!-- <button (click)="openDeleteDialog(course.courseId)">delete</button> -->
+            <button class="btn btn-secondary" (click)="openUpdateDialog(role.roleId,role.position_)">update</button>
+            <button (click)="openDeleteDialog(role.roleId )">Delete</button>
+        </td>
+    </tr>
+</table>
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateRole" (ngSubmit)="updateRole()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the Position</mat-label>
+                <input type="text" matInput  formControlName="position_" [(ngModel)]="role.position_"   placeholder="Position">
+              
+                
+              </mat-form-field>
+            </li>
+          
+                
+            
+             
+        </ul>
+        <button class="btn btn-success"  >Save</button>
+        <button mat-button mat-dialog-close>Cancel</button>
+    </form>
+</ng-template>
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete role ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+
+

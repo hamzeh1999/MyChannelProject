@@ -1,0 +1,55 @@
+
+
+    <div  class="container mt-5 d-flex justify-content-center">
+        <div        class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
+            <div class="my-card"> <video  controls class="my-card-img" > <source type="video/mp4" src="../../assets/Video/{{videoPath}}"></video>
+                <div class="my-card-body trainer-card-body">
+                    <h5>{{videoName}}</h5>
+                    <p>{{videoDescription}} and the date of creation is {{releaseDate |date : 'dd-MM-yyy'}} </p>
+                    <div class="social-icons coll" >
+                         <button class="button coll"><a ><i (click)="addLike()"class="fa fa-thumbs-o-up"></i></a></button><h6 > 
+                             <select    style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                            <option  autofocus aria-readonly="true" *ngFor="let like of home.data"    [selected]="videoId==like.videoId">{{like.likeCount}}</option>
+                         </select> </h6>
+                        
+                        
+                         <button class="button coll"><a ><i (click)="viewComments(videoId) "class="fa fa-comments-o"></i></a> </button>
+                         <button class="button coll">  <a ><i (click)="addDisLike()"  class="fa fa-thumbs-o-down"></i></a> </button>
+                         </div> 
+                         <a (click)="openDialogComment()" class="my-card-btn"><i class="fa fa-plus" aria-hidden="true"></i> Comment</a>
+                </div>
+            </div>
+        </div>
+        
+    <app-comment *ngFor = "let comment of home.commentbyid"    [commentId]="comment.commentId"  [userImage]="comment.userImage" [username]="comment.username"  [commentdate]="comment.commentdate"  [commenttext]="comment.commenttext" >
+        
+
+</app-comment>
+    
+
+</div>
+
+
+    
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="commentForme" (ngSubmit)="addComment()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter your comment</mat-label>
+                <input type="text" matInput formControlName="commentText"   >
+              
+                
+              </mat-form-field>
+            </li>
+       
+
+        </ul>
+        <button type="submit" class="btn btn-success" >Comment</button>
+        <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+
+
+    </form>
+</ng-template>
+
+

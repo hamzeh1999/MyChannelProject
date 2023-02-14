@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Add BadReport</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="badReportForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter Report Text</mat-label>
+          <input type="text" matInput  formControlName="ReportText" > 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+           
+      <mat-label>Enter channel Name :</mat-label>
+      <select formControlName="channelId"  class="form-control">
+        <option [ngValue]="null" disabled>Select channel</option>
+        <option *ngFor="let channel of home.datachannelforrep"  [ngValue]="channel.channelId"  >{{channel.channelName}}</option>
+
+      </select>
+  </li>
+       
+      </form> 
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-success" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>

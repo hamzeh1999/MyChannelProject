@@ -1,0 +1,28 @@
+<section style="height: 1000px;" id="category" class="portfolio section-bg">
+  <div class="container">
+
+    <div class="section-title aos-init aos-animate" data-aos="fade-up">
+      <h1>VISIT OUR CHANNELS </h1>
+      <br>
+      <p>What We Think Out For Ourselves Forms Channels In Which Other Thoughts Will Flow.</p>
+    </div>
+
+
+    <div   class="row portfolio-container aos-init aos-animate" data-aos="fade-up">
+      <div *ngFor="let category of home.dataCategory" class="col-lg-6 col-md-6 portfolio-item filter-card">
+        <div (click)="getAllChannelByCategoryId(category.categoryId)" class="portfolio-wrap">
+          <img  style="height: 300px; background-size: 100% 100%;" src="../../assets/images/{{category.categoryImage}}" class="img-fluid" alt="" >
+          <div class="portfolio-info">
+            <h4>{{category.categoryName}}</h4>
+            <p>{{category.categoryDescription}}</p>
+            <div class="portfolio-links">
+              <a href="portfolio-details.html" title="Visit The {{category.categoryName}}"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

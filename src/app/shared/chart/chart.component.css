@@ -1,0 +1,8 @@
+#divchart{
+    display:block;
+    width:400px;
+    height:400px;
+}
+body{
+    margin: 10px !important;
+}

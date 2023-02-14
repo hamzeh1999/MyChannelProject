@@ -1,0 +1,30 @@
+
+
+<form  (ngSubmit)="Searching()" [formGroup]="SearchForm"   class="row">  
+
+    <div class="col-lg-3">
+    <label>Enter  Start Date :</label>
+    <input  type="date" formControlName="pdate_from" placeholder="yyyy-mm-dd" class="form-control">
+</div>
+<div class="col-lg-3">
+    <label>Enter  End Date :</label>
+    <input type="date"  formControlName="pdate_to"  placeholder="yyyy-mm-dd"  class="form-control">
+</div>
+
+<div>
+    <input   type="submit" value="Send" class="btn btn-info">
+    <button  (click)="chart()" class="btn btn-info">Show Chart</button>
+    <input  (click)="refresh()" style="margin: 10px; width: 100px;" value="New Chart" class="btn btn-info">
+
+</div>
+</form>
+
+
+
+
+
+<div id ="divchart">
+<canvas id = "mychart">
+
+</canvas>
+</div>

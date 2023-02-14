@@ -1,0 +1,222 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+    <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+  
+      <div style="width: 200px;" class="logo">
+        <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+      </div>
+  
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+  
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+  
+    </div>
+  </header>
+
+  <br><br><br>
+  <br><br><br>
+
+  <button class="btn btn-dark" (click) = "openCreatDialog()">create new</button>
+<table>
+    <tr> <!--first row-->
+        <th> <!--heads of row-->
+            Home Id
+            
+        </th>
+        <th> <!--heads of row-->
+           phone Number
+            
+        </th>
+       
+        <th>
+            Website Name
+        </th>
+        
+        <th>
+           Address
+        </th>
+        <th>
+            social Media
+        </th>
+        <th>
+            Description
+        </th>
+        
+        <!-- <th>
+            About_Us Id
+        </th>
+        <th>
+            contact_Us Id
+        </th> -->
+        
+        <th>
+            logo
+        </th>
+        
+        <th>
+            BackGround Image
+        </th>
+        
+        <th>
+            Operations
+        </th>
+
+    </tr>
+    <tr *ngFor="let homeWebsite of home.dataAllHome">
+        <td>
+            {{homeWebsite.homeId}}
+
+        </td>
+        <td>
+            {{homeWebsite.phoneNumber}}
+
+        </td>
+        <td>
+            {{homeWebsite.websiteName}}
+
+        </td>
+        <td>
+            {{homeWebsite.address}}
+
+        </td>
+        <td>
+            {{homeWebsite.socialmedia}}
+
+        </td>  
+        <td>
+            {{homeWebsite.description_}}
+
+        </td>
+        <!-- <td>
+            {{homeWebsite.aboutUsId}}
+
+        </td>
+        <td>
+            {{homeWebsite.contactUsId}}
+
+        </td> -->
+        <td>
+            <img src="../../../assets/images/{{homeWebsite.logo}}" style="height:50px ; width :50px;">
+
+            
+
+        </td>
+        <td>
+            <img src="../../../assets/img/{{homeWebsite.backgroundImage}}" style="height:50px ; width :50px;">
+
+           
+
+        </td>
+        <td>
+            <!-- <button (click)="openDeleteDialog(course.courseId)">delete</button> -->
+            <button class="btn  btn-info" (click)="openUpdateDialog(homeWebsite.homeId,homeWebsite.logo,homeWebsite.phoneNumber,homeWebsite.websiteName,homeWebsite.backgroundImage
+            ,homeWebsite.address,homeWebsite.aboutUsId,homeWebsite.contactUsId,homeWebsite.socialmedia,homeWebsite.description_ )">update</button>
+            <button  class="btn btn-danger" (click)="openDeleteDialog(homeWebsite.homeId )">Delete</button>
+        </td>
+      
+    </tr>
+</table>
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form  [formGroup]="UpdateHomeForm" (ngSubmit)="updateHome()">
+        <ul class="row" >
+            <li class="col" >
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter phoneNumber :</mat-label>
+                  <input type="number" matInput  [(ngModel)]="homeWebsite.phoneNumber"  formControlName="phoneNumber">
+                </mat-form-field>
+            </li>
+        
+            <li class="col">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter websiteName :</mat-label>
+                  <input type="text" matInput   [(ngModel)]="homeWebsite.websiteName"  formControlName="websiteName" >
+                </mat-form-field>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter address</mat-label>
+                  <input type="text"  matInput   [(ngModel)]="homeWebsite.address"  formControlName="address"    >
+                  
+                </mat-form-field>
+              </li>
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter social Media</mat-label>
+                  <input type="text" matInput  [(ngModel)]="homeWebsite.socialmedia"  formControlName="socialmedia">      
+                </mat-form-field>
+            </li>
+        
+        
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter description of Home Website</mat-label>
+                  <input type="text" matInput  [(ngModel)]="homeWebsite.description_" formControlName="description_">      
+                </mat-form-field>
+            </li>
+        
+        
+        
+        
+        
+            <!-- <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter aboutUs Id</mat-label>
+                  <input type="number" matInput   [(ngModel)]="homeWebsite.aboutUsId" formControlName="aboutUsId">      
+                </mat-form-field>
+            </li>
+        
+                
+            <li>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter contactUs Id</mat-label>
+                  <input type="number" matInput   [(ngModel)]="homeWebsite.contactUsId" formControlName="contactUsId">      
+                </mat-form-field>
+            </li> -->
+        
+        
+            <li>
+                <label>Logo Image</label>
+                <input type="file"  #file (change)="uploadFileLogo(file.files)" formControlName="logo"  [(ngModel)]="homeWebsite.logo" placeholder="choose image">
+              <!-- <button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+                
+          </li>
+        
+        
+          <li>
+                 <label>Background Image</label>              
+            <input type="file"  #file1 (change)="uploadFile(file1.files)" formControlName="backgroundImage"   [(ngModel)]="homeWebsite.backgroundImage"  placeholder="choose image">
+          <!-- <button (click)="file.click()">upload Image</button> -->
+          <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+        </li>
+                    
+                      
+        
+        </ul>
+        <button type="submit" class="btn btn-success" >Save</button>
+
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete Home Website ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+   
+
+  </mat-dialog-actions>
+
+</ng-template>

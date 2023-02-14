@@ -1,0 +1,66 @@
+
+<section id="testimonial" >
+<div class="container">
+    <div class="row">
+        <div *ngFor="let Testimonial of home.dataTestimonial"  class="col-lg-3">
+            <div class="card">
+                <div class="face front-face"><img src="../../assets/images/{{Testimonial.testimonialImage}}" alt="" class="profile">
+                    <div class="pt-3 text-uppercase name"> 
+                        
+                        <select  disabled  style="  -webkit-appearance: none;   background-color: #F2F9F8;border: none; color: black;">
+                            <option  autofocus aria-readonly="true" *ngFor="let user of home.data"   [ngValue]="Testimonial.userId" [selected]="Testimonial.userId==user.userId">{{user.userName}}</option>
+                         </select> 
+                    
+                    
+                    
+                    
+                    </div>
+                </div>
+                <div class="face back-face"> <i class="bi bi-chat-left-quote"></i>
+                    <div class="testimonial"> {{Testimonial.testimonialText}} </div> <i class="bi bi-chat-right-quote"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div  class="col-lg-3">
+            <div class="card">
+                <div class="face front-face"><img src="../../assets/img/feedback1.jpg" alt="" class="profile">
+                    <div class="pt-3 text-uppercase name"> Add Your FeedBack </div>
+                </div>
+                
+                <div (click)="openDialogTestimonial()" class="face back-face row"> 
+                    <i style="font-size: 10rem;color:chocolate" class="bi bi-plus col"></i>
+                    <div class="testimonial col">It is not a problem that the opinion is negative...It is enough that it is your opinion 
+                    </div> 
+                </div>
+            </div>
+        </div>
+  
+    </div>
+  </div>
+</section>
+
+<ng-template #callCreatedialoge> <!--work when i call his name-->
+    <form [formGroup]="TestimonialForme" (ngSubmit)="createTestimonial()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Please Enter Your Feedback</mat-label>
+                <input type="text" matInput  formControlName="testimonialText"   placeholder="Your opinion...">
+              </mat-form-field>
+            </li>
+            <!-- <li>
+           
+                
+                <select formControlName="testimonialImage"    style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                    <option  autofocus aria-readonly="true" *ngFor="let user of home.datagetuser" [ngValue]="user.userId"  formControlName="" >{{user.userImage}}</option>
+                 </select> 
+            </li> -->
+
+
+        </ul>
+        <button style="margin: 0; padding: 10px;" class="btn btn-success">Add</button>
+        <button style="margin: 0; padding: 10px;" class="btn btn-danger"  mat-button mat-dialog-close>Cancel</button>
+    </form>
+</ng-template>

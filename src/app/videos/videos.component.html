@@ -1,0 +1,335 @@
+<!-- 
+<div class="row" style="padding-left:0;padding-right:0;">
+    <div class="col-lg-12" style="padding-left:0;padding-right:0;">
+        
+        <div *ngFor="let channel of home.dataChannelByChannel"   class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><img style="margin-bottom: 4rem!important;" src="../../assets/images/{{channel.channelImage}}" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{channel.channelname}}</h4>
+                        <p class="small mb-4"> <i class="fa fa-user mr-2"></i>{{channel.userName}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <button (click)="createSubscribe(channel.channelID)" class="btn btn-info"><i class="bi bi-plus"></i> Subscribe</button>
+                     </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block" >{{home.subcounter[0]["subsecribecounter"]}}</h5><small class="text-muted"> <i class="bi bi-person"></i>Followers</small>
+                    </li>
+                 
+                </ul>
+            </div>
+            <div class="px-4 py-3">
+                <h2  class="mb-0">About  The Channel</h2>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0">{{channel.channeldescription}}</p>
+                    <p class="font-italic mb-0">The Creator Lives in {{channel.addressUser}}</p>
+                    <p class="font-italic mb-0">Creation Date : {{channel.channeldate | date: 'dd-MM-yyy'}}  </p>
+                </div>
+            </div>
+            <div class="py-4 px-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="mb-0">Channel's Videos</h2>
+                </div>
+                <div class="row">
+                    <div class="row"><app-videos-card *ngFor = "let video of home.dataVideoChannel"  [videoId]="video.videoId" [videoPath]="video.videoPath" [videoName]="video.videoName" [releaseDate]="video.releaseDate" [videoDescription]="video.userId" [channelId] ="video.channelDescription" [categoryId]="video.categoryId" [comments]="video.badReports" [likings]="video.videos" [channel] ="video.subscribes" [category] ="video.user"></app-videos-card></div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--  -->
+<app-user-header></app-user-header>
+
+<div class="row" style="padding-left:0;padding-right:0;">
+    <div class="col-lg-12" style="padding-left:0;padding-right:0;">
+      
+      <div *ngFor="let channel of home.dataChannelByChannel" class="bg-light p-4 d-flex justify-content-end text-center">
+        <ul class="list-inline mb-0">
+          <li (click)="createBadReport(channel.channelID)" class="list-inline-item">
+            <button  class="btn btn-info"><i class="bi bi-plus"></i>
+              Bad Report</button>
+            </li>
+          <ng-template [ngIf]="true">
+              <li class="list-inline-item">
+            <button (click)="createSubscribe(channel.channelID)" class="btn btn-info"><i class="bi bi-plus"></i>
+              Subscribe</button>
+          </li>
+        </ng-template>
+          <li class="list-inline-item">
+            <h5 class="font-weight-bold mb-0 d-block"> {{home.subcounter[0]["subsecribecounter"]}}</h5><small class="text-muted"> <i
+                class="bi bi-person"></i>Followers</small>
+          </li>
+
+        </ul>
+      </div>
+
+      <div *ngFor="let channel of home.dataChannelByChannel" class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 cover">
+          <div class="media align-items-end profile-head">
+            <div class="profile mr-3"><img style="margin-bottom: 4rem!important;"
+                src="../../assets/images/{{channel.channelImage}}" alt="..." width="130"
+                class="rounded mb-2 img-thumbnail"></div>
+            <div class="media-body mb-5 text-white">
+              <h4 class="mt-0 mb-0">{{channel.channelname}}</h4>
+              <p class="small mb-4"> <i class="fa fa-user mr-2"></i>{{channel.userName}}</p>
+            </div>
+          </div>
+        </div>
+      
+
+        <div class="px-4 py-3">
+          <h2 class="mb-0">About The Channel</h2>
+          <div class="p-4 rounded shadow-sm bg-light">
+            <p class="font-italic mb-0">{{channel.channeldescription}}</p>
+            <p class="font-italic mb-0"> {{channel.addressUser}}</p>
+            <p class="font-italic mb-0"> {{channel.channeldate | date: 'dd-MM-yyy'}} </p>
+          </div>
+        </div>
+        <div class="py-4 px-4">
+          <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="mb-0">Channel's Videos</h2>
+          </div>
+  
+  
+  
+          <div style="display: flex; height: 100% ; width: 100% ;" class="row portfolio-container aos-init aos-animate"
+            data-aos="fade-up">
+            <div style=" padding-top: 50px" *ngFor="let video of home.dataVideoChannel" class="col-lg-6 col-md-6 portfolio-item filter-card">
+              <div style="display: flex; height: 100% ; width: 100%;" class="my-card"> <video controls
+                  class="my-card-img">
+                  <source type="video/mp4" src="../../assets/Video/{{video.videoPath}}">
+                </video>
+                <div class="my-card-body trainer-card-body">
+                  <h5>{{video.videoName}}</h5>
+                  <p style="font-size: 15px;">{{video.videoDescription}} </p>
+                  <P> {{video.releaseDate |date : 'dd-MM-yyy'}} </P>
+                  <div class="social-icons coll">
+                    <button class="button coll"><a><i (click)="addLike()" class="fa fa-thumbs-o-up"></i></a></button>
+                    <button class="button coll"> <a><i (click)="addDisLike()" class="fa fa-thumbs-o-down"></i></a></button>
+                    <h6>
+                      <select
+                        style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                        <option autofocus aria-readonly="true" *ngFor="let like of home.data"
+                          [selected]="videoId==like.videoId">{{like.likeCount}}</option>
+                      </select>
+                    </h6>
+                    <div (click)="openDialogComment(video.videoId)"  class="mt-3 d-flex flex-row align-items-center p-3 form-color"> <i style="margin-right: 20px;
+                      color: #42bdbd;" class='fa fa-comments'></i>
+                      <input
+                      type="text" class="form-control" placeholder="Enter your comment..."> </div>
+  
+                      <button  class="button coll"><a><i style="font-size: 10px;" (click)="viewComments(video.videoId) "
+                        > View Comment</i></a> </button>
+  
+                  </div>
+                  <!-- <a (click)="openDialogComment(video.videoId)" class="my-card-btn"><i class="fa fa-plus"
+                      aria-hidden="true"></i> Comment</a> -->
+  
+  
+  
+                     
+                </div>
+  
+              </div>
+            
+            </div>
+         
+            <div style="width: 49%;"  class="container mt-5 mb-5">
+              <div class="row height d-flex justify-content-center align-items-center">
+                <div style="  margin-right: 300px;"class="col-md-7">
+
+                  <div  *ngFor="let comment of home.commentbyid" class="card">
+                    <div  class="mt-2">
+                      <div  class="d-flex flex-row p-3"> <img style="width: 15%; height: 15%; margin-top: 10px;" src="../../assets/images/{{comment.userImage}}" width="40"
+                          height="40" class="rounded-circle mr-3">
+                        <div class="w-100">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row align-items-center"> 
+                              <p style="font-size: 13px;" >{{comment.username}}</p> </div>
+                                <p style="font-size: 10px;">{{comment.commentdate|date : 'dd-MM-yyy'}}</p> 
+                                 <br><br>
+                          </div>
+                          <p style="font-size: 13px;font-weight: bold;"class="text-justify comment-text mb-0"> {{comment.commenttext}}</p>
+                          <div class="d-flex flex-row user-feed"> 
+                            <span style="    margin-right: 10px;" class="wish"  (click)="callupdateCommentdialoge(comment.commentId,comment.commentText,comment.videoId)"><i class="fa fa-pencil mr-2"></i>Edit  </span>
+                            <span class="wish" (click)="openDeleteDialog(comment.commentId )"><i class="fa fa-trash-o mr-2" ></i>  Delete  </span>    
+                            <span class="ml-3" (click)="openDialogReplyComment(comment.commentId)"><i class="fa fa-comments-o mr-2 " ></i>Reply</span>
+                               
+
+                                </div>
+                              
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+              </div>
+           
+            </div>
+           
+             
+            <!-- <div style="width: 49%;"  class="container mt-5 mb-5">
+              <div class="row height d-flex justify-content-center align-items-center">
+                <div style="  margin-right: 300px;"class="col-md-7">
+
+                  <div  *ngFor="let comment of home.commentbyid" class="card">
+                    <div  class="mt-2">
+                      <div  class="d-flex flex-row p-3"> <img style="width: 10%; height: 10%;" src="../../assets/images/{{comment.userImage}}" width="40"
+                          height="40" class="rounded-circle mr-3">
+                        <div class="w-100">
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex flex-row align-items-center"> 
+                              <p style="font-size: 10px;" >{{comment.username}}</p> </div>
+                                <p style="font-size: 9px;">{{comment.commentdate|date : 'dd-MM-yyy'}}</p> 
+                                 <br><br>
+                          </div>
+                          <p style="font-size: 10px;font-weight: bold;"class="text-justify comment-text mb-0"> {{comment.commenttext}}</p>
+                          <div class="d-flex flex-row user-feed"> <span class="wish"><i
+                                class="fa fa-heartbeat mr-2"></i>54</span> <span class="ml-3"><i
+                                class="fa fa-comments-o mr-2 " (click)="openDialogReplyComment(comment.commentId)"></i>Reply</span> </div>
+                            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+  <br><br><br>
+  
+  
+  
+  
+          </div>
+        
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+  
+  
+  <ng-template #callUpdateCommentdialoge> <!--work when i call his name-->
+    <form [formGroup]="Updatecomment" (ngSubmit)="updateComment()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Re-write your comment</mat-label>
+                <input type="text"  matInput formControlName="commentText" [(ngModel)]="comment.commentText"  >
+              
+                
+              </mat-form-field>
+            </li>
+           
+             
+                  
+               
+        
+        </ul>
+        <mat-dialog-actions align="end">
+        <button mat-button [mat-dialog-close]="true"   type="submit" class="btn btn-success" style="background-color: #3d868696; border-color: black; ">Comment</button>
+      </mat-dialog-actions>
+    </form>
+</ng-template>
+
+
+<ng-template #callDeleteDialoge>
+  <h2>Are you sure you want to  delete Comment ?</h2>
+<mat-dialog-actions align="end">
+
+  
+  <button   class="btn btn-success" mat-button mat-dialog-close ="no">no</button>
+
+  <button  class="btn btn-danger"  mat-button mat-dialog-close="yes"  >yes</button>
+  
+ 
+
+</mat-dialog-actions>
+</ng-template>
+
+  <ng-template #callUpdatedialoge>
+    <!--work when i call his name-->
+    <form [formGroup]="commentForme" (ngSubmit)="addComment()">
+      <ul>
+        <li>
+          <mat-form-field style="color: black;" class="example-full-width" appearance="fill">
+            <mat-label>Enter your comment</mat-label>
+            <input type="text" matInput formControlName="commentText">
+  
+  
+          </mat-form-field>
+        </li>
+  
+  
+      </ul>
+      <mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="true"  type="submit" class="btn btn-success" style="background-color: #3d868696; border-color: black; ">Comment</button>
+      </mat-dialog-actions>
+  
+    </form>
+  </ng-template>
+  
+  
+  <ng-template #callReplayUpdatedialoge>
+    <!--work when i call his name-->
+    <form [formGroup]="ReplycommentForme" (ngSubmit)="addReplyComment()">
+      <ul>
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Enter your Reply comment</mat-label>
+            <input type="text" matInput formControlName="replayCommentText">
+  
+  
+          </mat-form-field>
+        </li>
+  
+  
+      </ul>
+      <mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="true"   type="submit" class="btn btn-success">ReplyComment</button>
+      </mat-dialog-actions >
+
+  
+    </form>
+  </ng-template>
+  
+
+ 
+  <ng-template #callBadReportdialoge>
+    <!--work when i call his name-->
+    <form [formGroup]="badReportForme" (ngSubmit)="save()">
+      <ul>
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Enter your Report</mat-label>
+            <input type="text" matInput formControlName="ReportText">
+  
+  
+          </mat-form-field>
+        </li>
+  
+  
+      </ul>
+      <mat-dialog-actions align="end">
+      <button mat-button [mat-dialog-close]="true"  type="submit" class="btn btn-success">Send</button>
+      </mat-dialog-actions>
+  
+    </form>
+  </ng-template>
+
+
+
+
+

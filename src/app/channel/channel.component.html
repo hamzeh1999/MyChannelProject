@@ -1,0 +1,45 @@
+<app-user-header></app-user-header>
+<br><br><br><br><br><br><br>
+
+
+
+
+<div class="section-title aos-init aos-animate" data-aos="fade-up">
+  <h1>VISIT OUR CHANNELS </h1>
+  <br>
+  <p>What We Think Out For Ourselves Forms Channels In Which Other Thoughts Will Flow.</p>
+</div>
+
+
+<br><br>
+
+
+<div class="row" style="height: 300px;">
+<div *ngFor = "let channel of home.dataChannelByCategory"   class=" col-lg-6 blog-card">
+  <div  class="meta">
+    <div class="photo" >
+      <img src="../../assets/images/{{channel.channelImage}}" style="width: 100%; height: 100%; background-size: 100% 100%;">
+    </div>
+    <ul class="details">
+      <li class="author"><select disabled  style="  -webkit-appearance: none; background-color: inherit; border: none; color: white;"><option href="#"  autofocus aria-readonly="true" *ngFor="let user of home.data"   [selected]="channel.userId==user.userId">{{user.userName}}</option></select></li>
+      <li class="date">{{channel.channelDate |date: 'dd-MM-yyy'}}</li>
+      <li class="tags">
+
+      </li>
+    </ul>
+  </div>
+  <div class="description">
+    <h1>{{channel.channelName}}</h1>
+    <h2>{{channel.channelDescription}}</h2>
+    <p class="read-more">
+      <a (click)="getAllVideoByChannelId(channel.channelId)">VIEW VIDEOS</a>
+    </p>
+  </div>
+</div>
+
+</div>
+
+<!-- <app-channel-card *ngFor = "let channel of home.dataChannel" [channelId]="channel.channelId" [channelName]="channel.channelName" [channelDate]="channel.channelDate" [channelImage]="channel.channelImage" [userId]="channel.userId" [channelDescription] ="channel.channelDescription" [categoryId]="channel.categoryId" [badReports]="channel.badReports" [videos]="channel.videos" [subscribes] ="channel.subscribes" [user] ="channel.user" [category] ="channel.category"></app-channel-card> -->
+
+<br><br><br><br><br><br><br><br>
+<app-footer></app-footer>

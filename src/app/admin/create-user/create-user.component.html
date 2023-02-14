@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>Add User</h2>
+<mat-dialog-content class="mat-typography">
+    <form class="example-form" [formGroup]="userForme">
+        <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter User Name</mat-label>
+          <input type="text" matInput  formControlName="userName"     placeholder="User Name: ">
+        
+          <mat-error *ngIf="userForme.controls['userName'].hasError('required')">
+            User Name is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    <!-- to upload file -->
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter User Email</mat-label>
+          <input type="email" matInput  formControlName="email"     placeholder="Email :">
+        
+          <mat-error *ngIf="userForme.controls['email'].hasError('required')">
+            Email  is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+    
+
+    <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Enter User Password</mat-label>
+          <input type="password" matInput  formControlName="password_"     placeholder="Password :">
+        
+          <mat-error *ngIf="userForme.controls['password_'].hasError('required')">
+            Password  is <strong>required</strong>
+          </mat-error> 
+        </mat-form-field>
+    </li>
+
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter Age</mat-label>
+              <input type="number"  matInput  formControlName="userAge"    placeholder="User Age:">
+            
+            </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter Address</mat-label>
+              <input type="text" matInput  formControlName="addressUser"    placeholder=" Address User:">
+            
+            </mat-form-field>
+          </li>
+          
+          <li>
+      
+            <input type="file"  #file (change)="uploadFile(file.files)" formControlName="userImage" placeholder="choose image">
+          <!-- <button class="btn btn-primary" (click)="file.click()">upload Image</button> -->
+          <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+            
+      </li>
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Register Date</mat-label>
+              <input type="datetime" readonly value="registerDate" matInput   formControlName="registerDate"    placeholder="Register Date:">
+            
+            </mat-form-field>
+          </li>
+          <li>
+           
+              <mat-label>Enter Position :</mat-label>
+              <select formControlName="roleId"  class="form-control">
+                <option [ngValue]="null" disabled>Select Role</option>
+                <option *ngFor="let role of home.dataUserRole"  [ngValue]="role.roleId"  >{{role.position_}}</option>
+
+              </select>
+          </li>
+
+
+      
+      
+      
+      
+    
+        
+      </form> 
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button   class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+  
+  <button class="btn btn-primary" mat-button [mat-dialog-close]="true" (click)="save()" cdkFocusInitial>Save</button>
+  <!-- save() in createcourse.ts is the function that used to send the data to the data base -->
+</mat-dialog-actions>
+

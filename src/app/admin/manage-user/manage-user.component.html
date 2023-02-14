@@ -1,0 +1,272 @@
+
+<header   id="header" class="fixed-top d-flex align-items-center">
+  <div  *ngFor="let homeWebsite of home.dataAllHome" class="container d-flex justify-content-between">
+
+    <div style="width: 200px;" class="logo">
+      <!-- <h1 style="margin-top: 25px;"><a >{{homeWebsite.websiteName}}</a></h1> -->
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <a routerLink="/home" href="#home"><img style="width: 250px ; height: 100px;" src="../../../assets/images/{{homeWebsite.logo}}" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto"  href="http://localhost:4200/admin/dashboard">My Profile</a></li>
+
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+  </div>
+</header>
+<br><br><br>
+<br><br><br>
+
+
+
+<button (click) = "openCreatDialog()">create new</button>
+<!-- <form  (ngSubmit)="SearchingUser()" [formGroup]="DateForm"   class="row">
+
+
+  <div>
+  <label>Enter  Start Date :</label>
+  <input  type="date" formControlName="pdate_from"  class="form-control">
+</div>
+<div>
+  <label>Enter  End Date :</label>
+  <input type="date"  formControlName="pdate_to"   class="form-control">
+</div>
+<div>
+  <input   type="submit" value="Send" class="btn btn-info">
+</div>
+</form> -->
+<div style="width: 100%;"  id="content" #content>
+<table >
+<tr>
+  <td> number of user</td>
+</tr>
+<tr *ngFor="let num of home.dataSearchUserDate">
+  <td>{{num.numberOfUsers}}</td>
+</tr>
+
+
+</table>
+
+
+<table>
+    <tr>
+       <!--first row-->
+
+       <th> <!--heads of row-->
+        User Id
+
+    </th>
+       <th> <!--heads of row-->
+            User name
+
+        </th>
+
+        <th> <!--heads of row-->
+          User Register
+
+      </th>
+
+       <th> <!--heads of row-->
+        User Email
+
+    </th>
+    <th> <!--heads of row-->
+         User Password
+
+     </th>
+
+        <th>
+            User Age
+        </th>
+        
+        <th>
+          Role Position
+      </th>
+        <th>
+            User Address
+        </th>
+
+        <th>
+          Image User
+      </th>
+
+        <th>
+            operation
+        </th>
+
+    
+
+
+    </tr>
+
+
+    <!-- <tr *ngFor="let result of home.NumOfRegisterUsers">
+      <td>
+        {{result.NumOfRegisterUsers}}
+
+    </td>
+    </tr> -->
+
+    <tr *ngFor="let user of home.data " >
+
+      <td>
+            {{user.userId}}
+
+        </td>
+        <td>
+            {{user.userName}}
+
+        </td>
+        <td>
+          {{user.registerDate |date: 'dd-MM-yyy'}}
+
+      </td>
+        <td>
+            {{user.email}}
+
+        </td>
+
+        <td>
+          {{user.password_}}
+
+      </td>
+      <td>
+          {{user.userAge}}
+
+      </td>
+
+      <td>
+              <select  disabled  style="  -webkit-appearance: none;   background-color: #ffffffff;border: none; color: black;">
+                    <option  autofocus aria-readonly="true" *ngFor="let role of home.dataUserRole"   [ngValue]="user.userId" [selected]="user.roleId==role.roleId">{{role.position_}}</option>
+                 </select> 
+
+    </td>
+      <td>
+          {{user.addressUser}}
+
+      </td>
+
+        <td>
+           <img src="../../../assets/images/{{user.userImage}}" style="height:50px ; width :50px;">
+
+        </td>
+
+        <td>
+            <!-- <button (click)="openDeleteDialog(course.courseId)">delete</button> -->
+            <button (click)="openUpdateDialog(user.userId,user.userName,user.userImage,user.userAge,user.email,user.password_,user.addressUser,user.roleId )">update</button>
+            <button (click)="openDeleteDialog(user.userId)">Delete</button>
+
+
+        </td>
+
+    </tr>
+</table>
+
+
+  <app-chart ></app-chart>
+  
+</div>
+<button style="margin-top: -290px; margin-left: 220px;" class="btn btn-info" (click)="zainPdf()">Generate PDF</button>
+
+
+
+<ng-template #callUpdatedialoge> <!--work when i call his name-->
+    <form [formGroup]="UpdateUserForm" (ngSubmit)="updateUser()">
+        <ul>
+        <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the user name</mat-label>
+                <input type="text" matInput  formControlName="userName" [(ngModel)]="user.userName"   placeholder="categoryName">
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter User Email</mat-label>
+                <input type="email" matInput  formControlName="email"  [(ngModel)]="user.email"    placeholder="Email :">
+              </mat-form-field>
+          </li>
+
+
+          <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter User Password</mat-label>
+                <input type="password" matInput  formControlName="password_"  [(ngModel)]="user.password_"    placeholder="Password :">
+              </mat-form-field>
+          </li>
+
+          <li>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Enter the user Address</mat-label>
+                <input type="text" matInput  formControlName="addressUser" [(ngModel)]="user.addressUser"  >
+
+
+              </mat-form-field>
+            </li>
+
+            <li>
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter the user Age</mat-label>
+                  <input type="number" matInput  formControlName="userAge" [(ngModel)]="user.userAge"   >
+
+
+                </mat-form-field>
+              </li>
+
+
+
+              <li>
+
+                <input type="file"  #file (change)="uploadFile(file.files)" formControlName="userImage" [(ngModel)]="user.userImage"  placeholder="choose image">
+              <!-- //<button (click)="file.click()">upload Image</button> -->
+              <!-- to take the images from here i have to copy the path of file that the image i want in it and go the visulastudio at uploadimage prosedure -->
+
+          </li>
+
+          <li>
+            <!-- <mat-form-field class="example-full-width" appearance="fill" >
+              <mat-label>role Id</mat-label> -->
+              <label>Enter Position :</label>
+              <select formControlName="roleId" name="roleID"   roleId="ngModel" class="form-control">
+                <option [ngValue]="null" disabled>Select Position</option>
+                <option *ngFor="let role of home.dataUserRole"  [ngValue]="role.roleId">{{role.position_}}</option>
+
+              </select>
+              <!-- <input type="number" matInput  readonly  value="roleId" formControlName="roleId"    placeholder="Role Id:">
+             -->
+            <!-- </mat-form-field> -->
+          </li>
+
+
+        </ul>
+        <button>Update</button>
+
+    </form>
+
+</ng-template>
+
+<ng-template #callDeleteDialoge>
+    <h2>Are you sure you want to delete user ?</h2>
+<mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close ="no">no</button>
+
+    <button mat-button mat-dialog-close="yes"  >yes</button>
+
+
+
+  </mat-dialog-actions>
+
+</ng-template>
+
+
+
+
+
+

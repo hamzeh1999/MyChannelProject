@@ -1,0 +1,29 @@
+<app-header></app-header>
+
+<!--Responsive Hero Image with CSS Text + Button + popup Full-Width. If you like my work, please credit author: www.action360.ca @action360ca Enjoy!-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700,800" rel="stylesheet">
+
+<div *ngFor="let Homee of home.dataAllHome" class="hero-image" style="height: 100%;">
+  <img class="hero-image" src="../../assets/img/{{Homee.backgroundImage}}">
+  <div class="hero-text">
+    <h1 style="font-style: Georgia; color: #fff; font-size:50px;">{{Homee.websiteName}}</h1>
+    <br>
+    <p>{{Homee.description_}}</p>
+    <!-- <button>CREATE YOUR CHANNEL</button> -->
+  </div>
+
+  <!--lightbox style popup goes here-->
+</div>
+<app-aboutus id ="About Us"></app-aboutus>
+
+<app-category id="Category"></app-category>
+<app-testimonial id ="Testimonial"></app-testimonial>
+<app-contactus id="Countact Us"></app-contactus>
+
+<br><br><br><br><br><br>
+
+
+<app-footer></app-footer>
